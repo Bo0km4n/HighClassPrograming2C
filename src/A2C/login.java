@@ -1,24 +1,19 @@
 package A2C;
-
 import java.io.*;
 import java.sql.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-public class register extends HttpServlet{
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+public class login extends HttpServlet{
 	private PreparedStatement statement;
-	private ResultSet resultset;
 	
-	
-	public void doGet (HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
+	public void doGet(HttpServletRequest request,HttpServletResponse response)
+			throws ServletException, IOException{
 		RequestDispatcher rd = null;
 		request.setCharacterEncoding("UTF-8");
-		try{
+try{
 			
 			// JDBCドライバの登録
             // データベースの指定
@@ -34,22 +29,22 @@ public class register extends HttpServlet{
 
 			String User_id = request.getParameter("User_id");
 			int id = Integer.parseInt(User_id);
-			String name = request.getParameter("name");
 			String user_password = request.getParameter("password");
 			
 				
-				String sql = "insert into users values(?,?,?)";
+				String sql = "select * from users where id=? and password=?";
 				//sql挿入
 				statement=con.prepareStatement(sql);
 				statement.setInt(1,id);
 				statement.setString(2,user_password);
-				statement.setString(3,name);
 				statement.executeUpdate();
 				statement.close();
 				con.close();
-				String message_success = "登録が完了しました";
-				request.setAttribute("message_success", message_success);
-				 rd = request.getRequestDispatcher("/register_success.jsp");
+								
+				//user.jspへセッション作成用のidを設定
+				request.setAttribute("user_id",id);
+				
+				 rd = request.getRequestDispatcher("/user.jsp");
 			
 			
 		}catch(Exception e){
@@ -59,11 +54,6 @@ public class register extends HttpServlet{
 			rd.forward(request,response);
 			
 		}
-		
 	}
-	public void doPost(HttpServletRequest request, HttpServletResponse response) 
-	        throws ServletException, IOException {
-	        doGet(request,response);
-	    }
-
+	
 }
