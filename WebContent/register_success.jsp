@@ -19,7 +19,7 @@
 	<div class="container">
 		<div Align="center">
 			<font color = "#0000ff"><b><%= result %>></b></font><br>
-			<form action = "user.html" method="GET">
+			<form action = "top.html" method="GET">
         	<input type = "submit" value="戻る" />
     		</form>
 		</div>
