@@ -32,12 +32,20 @@ try{
 			String user_password = request.getParameter("password");
 			
 				
-				String sql = "select * from users where id=? and password=?";
-				//sql挿入
+				String sql = "select * from users where user_id = ? and password = ?";
+				//ユーザーsql検索
 				statement=con.prepareStatement(sql);
 				statement.setInt(1,id);
 				statement.setString(2,user_password);
-				statement.executeUpdate();
+				
+				ResultSet rs = statement.executeQuery();
+				
+				//確認用出力
+				while(rs.next()){
+					System.out.println(rs.getInt(1) + ":");
+					System.out.println(rs.getString(2) + ":");
+				}
+				
 				statement.close();
 				con.close();
 								
@@ -55,5 +63,9 @@ try{
 			
 		}
 	}
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+	        throws ServletException, IOException {
+	        doGet(request,response);
+	    }
 	
 }

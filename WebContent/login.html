@@ -2,9 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+<title>ログイン</title>
 </head>
 <body>
-
+	<div class="container">
+		<div Align="center">
+		<form method="POST" action="login">
+			<p>学籍番号</p>
+			<input type="number" name="User_id"><br>
+			<p>パスワード</p>
+			<input type="password" name="password"><br>
+			<input type="submit" value="Send">
+		</form>
+		</div>
+	</div>
 </body>
 </html>
