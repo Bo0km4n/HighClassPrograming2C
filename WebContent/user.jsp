@@ -1,10 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.sql.*, A2C.MyDBAccess" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
     <% int user_id = (int)session.getAttribute("user_id"); 
     String user_name = (String)session.getAttribute("user_name");
     String session_id = session.getId();
     %>
+    
+    <%
+// 内容: データベースにアクセスする
+ 
+// MyDBAccess のインスタンスを生成する
+MyDBAccess db = new MyDBAccess();
+ 
+// データベースへのアクセス
+db.open();
+ 
+// メンバーを取得
+ResultSet rs = db.getResultSet("select application_name from applications");
+ %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,7 +55,30 @@
 			<%= user_name %><p>
 			<%= user_id %><p>
 			<%= session_id %>
-		</div>	
+			</div>
+			
+				
+			<!-- application_nameの一覧表示  -->
+			<form class="form-horizontal" action="/Advanced2C/application_shortcuts" method="post">
+		  <div class="form-group">
+		    <label for="number" class="control-label col-xs-2">Number</label>
+		    <div class="col-xs-3">
+		      <select class="form-control" id="application_name" name="application_name">
+		      <% while(rs.next()){ 
+		      String application_name = rs.getString("application_name");	%>
+		        <option value="<%= application_name %>"><%= application_name %></option> 
+		    <%   } %>
+		      </select>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-xs-offset-2 col-xs-10">
+		      <button type="submit" class="btn btn-primary">Submit</button>
+		    </div>
+		  </div>
+		</form>
+		<!-- 一覧表示終わり -->
+		
 	</div>	
 </body>
 </html>

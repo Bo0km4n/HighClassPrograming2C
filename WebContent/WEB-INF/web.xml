@@ -38,4 +38,12 @@
   	<url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>MyDBAccess</servlet-name>
+  	<servlet-class>A2C.MyDBAccess</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>MyDBAccess</servlet-name>
+  	<url-pattern>/MyDBAccess</url-pattern>
+  </servlet-mapping>
 </web-app>
