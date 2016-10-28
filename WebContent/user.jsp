@@ -15,8 +15,28 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 <title><%= user_name %></title>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">AdvancedInformation2C</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/Advanced2C/top.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="/Advanced2C/logout">logout</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 </head>
-<body>
+<body style="padding-top: 70px">
 	<div class="container">
 		<div Align="center">	
 			<%= user_name %><p>

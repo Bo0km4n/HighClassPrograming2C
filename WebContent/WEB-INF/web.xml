@@ -29,5 +29,13 @@
   	<url-pattern>/login_check1</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>A2C.logout</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
   
 </web-app>
