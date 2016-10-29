@@ -59,13 +59,21 @@ public class MyDBAccess {
     }
  
     /**
-     * SQL 文の実行
+     * Select SQL 文の実行
      * @param sql SQL 文
      */
     public void execute(String sql) throws Exception {
         statement.execute(sql);
     }
+    
+    /**
+     * INSERT 文の実行
+     */
  
+    public void executeUpdate(String sql) throws Exception{
+    	statement.executeUpdate(sql);
+    }
+    
     /**
      * データベースへのコネクションのクローズ
      */

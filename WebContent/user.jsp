@@ -16,7 +16,7 @@ MyDBAccess db = new MyDBAccess();
 db.open();
  
 // メンバーを取得
-ResultSet rs = db.getResultSet("select application_name from applications");
+ResultSet rs = db.getResultSet("select * from applications");
  %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -61,13 +61,15 @@ ResultSet rs = db.getResultSet("select application_name from applications");
 			<!-- application_nameの一覧表示  -->
 			<form class="form-horizontal" action="/Advanced2C/application_shortcuts" method="post">
 		  <div class="form-group">
-		    <label for="number" class="control-label col-xs-2">Number</label>
+		    <label for="number" class="control-label col-xs-2">Application_name</label>
 		    <div class="col-xs-3">
 		      <select class="form-control" id="application_name" name="application_name">
 		      <% while(rs.next()){ 
-		      String application_name = rs.getString("application_name");	%>
-		        <option value="<%= application_name %>"><%= application_name %></option> 
-		    <%   } %>
+		      String application_name = rs.getString("application_name");	
+		      int application_id = rs.getInt("application_id");
+		      %>
+		        <option value=<%= application_id %>><%= application_name %></option> 
+		      <% } %>
 		      </select>
 		    </div>
 		  </div>

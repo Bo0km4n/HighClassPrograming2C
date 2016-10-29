@@ -46,4 +46,15 @@
   	<servlet-name>MyDBAccess</servlet-name>
   	<url-pattern>/MyDBAccess</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>application_shortcuts</servlet-name>
+  	<servlet-class>A2C.application_shortcuts</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>application_shortcuts</servlet-name>
+  	<url-pattern>/application_shortcuts</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
