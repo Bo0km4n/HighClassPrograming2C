@@ -42,7 +42,7 @@ ResultSet rs = db.getResultSet("select * from applications");
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/Advanced2C/top.html">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="/Advanced2C/user_edit.jsp">Edit</a></li>
         <li><a href="/Advanced2C/logout">logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -63,12 +63,12 @@ ResultSet rs = db.getResultSet("select * from applications");
 		  <div class="form-group">
 		    <label for="number" class="control-label col-xs-2">Application_name</label>
 		    <div class="col-xs-3">
-		      <select class="form-control" id="application_name" name="application_name">
+		      <select class="form-control" name="application_id">
 		      <% while(rs.next()){ 
 		      String application_name = rs.getString("application_name");	
 		      int application_id = rs.getInt("application_id");
 		      %>
-		        <option value=<%= application_id %>><%= application_name %></option> 
+		        <option value="<%= application_id %>"><%= application_name %></option> 
 		      <% } %>
 		      </select>
 		    </div>

@@ -14,11 +14,11 @@ public class application_shortcuts extends HttpServlet{
 			 *  user_idとapplication_idの紐付け
 			 */
 			db.open();
-			String id = request.getParameter("application_id");
-			int application_id = Integer.parseInt(id);
-			int user_id = (int)session.getAttribute("user_id");
-			String sql = "insert into user_applications values (" + user_id + "," + application_id + ")";
-			db.executeUpdate(sql);
+			
+			/**
+			 * この実際の処理は少しお預け、user_edit.jsp user_edit.javaを作ったら
+			 */
+			
 			rd = request.getRequestDispatcher("/application_shortcuts.jsp");
 			
 		}catch(Exception e)
