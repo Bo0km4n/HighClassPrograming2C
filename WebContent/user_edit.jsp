@@ -13,8 +13,11 @@ db.open();
 // sql文の作成
 int user_id = (int)session.getAttribute("user_id");
 String sql = "select B.* from user_applications A,applications B where A.user_id = " + user_id + " and B.application_id=A.application_id;"; 
+String sql_add = "select * from applications where application_id not in (select application_id from user_applications where user_id=" + user_id + ");" ;
 // メンバーを取得
 ResultSet rs = db.getResultSet(sql);
+
+
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -48,6 +51,9 @@ ResultSet rs = db.getResultSet(sql);
 </head>
 <body style="padding-top: 70px">
 	<div class="container">
+	
+		<!-- ユーザーにアクティブなアプリケーションの一覧 -->
+		<h1>Your applications</h1>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -68,6 +74,19 @@ ResultSet rs = db.getResultSet(sql);
 		      	
 			</tbody>
 		</table>
+		<% rs.close(); %>
+		<!-- 一覧終了 -->
+		
+		<!-- アプリケーションの追加 user_applicationsテーブル -->
+			<h2>Add application!</h2>
+			<% ResultSet rs_add = db.getResultSet(sql_add); %>
+			<% 
+				while(rs_add.next()){
+					out.println(rs_add.getString("application_name"));
+					out.println(rs_add.getString("application_overview"));
+				}
+			%>		
+		<!-- 追加処理 user_edit.java へ -->
 	</div>
 </body>
 </html>
