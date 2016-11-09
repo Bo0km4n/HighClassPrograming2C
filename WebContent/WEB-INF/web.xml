@@ -56,5 +56,23 @@
   	<url-pattern>/application_shortcuts</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>user_edit</servlet-name>
+  	<servlet-class>A2C.user_edit</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>user_edit</servlet-name>
+  	<url-pattern>/user_edit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>user_edit_delete</servlet-name>
+  	<servlet-class>A2C.user_edit_delete</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>user_edit_delete</servlet-name>
+  	<url-pattern>/user_edit_delete</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

@@ -16,7 +16,7 @@ MyDBAccess db = new MyDBAccess();
 db.open();
  
 // メンバーを取得
-ResultSet rs = db.getResultSet("select * from applications");
+ResultSet rs = db.getResultSet("select B.* from user_applications A,applications B where A.user_id = " + user_id + " and B.application_id=A.application_id;");
  %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +27,7 @@ ResultSet rs = db.getResultSet("select * from applications");
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    
 <title><%= user_name %></title>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -51,24 +52,19 @@ ResultSet rs = db.getResultSet("select * from applications");
 </head>
 <body style="padding-top: 70px">
 	<div class="container">
-		<div Align="center">	
-			<%= user_name %><p>
-			<%= user_id %><p>
-			<%= session_id %>
-			</div>
 			
 				
 			<!-- application_nameの一覧表示  -->
-			<form class="form-horizontal" action="/Advanced2C/application_shortcuts" method="post">
+			<form class="form-horizontal" action="/Advanced2C/application_shortcuts.jsp" method="post">
 		  <div class="form-group">
-		    <label for="number" class="control-label col-xs-2">Application_name</label>
+		    <label for="number" class="control-label col-xs-2">Please choice your Application_name</label>
 		    <div class="col-xs-3">
 		      <select class="form-control" name="application_id">
 		      <% while(rs.next()){ 
 		      String application_name = rs.getString("application_name");	
 		      int application_id = rs.getInt("application_id");
 		      %>
-		        <option value="<%= application_id %>"><%= application_name %></option> 
+		        <option value=<%= application_id %>><%= application_name %></option> 
 		      <% } %>
 		      </select>
 		    </div>

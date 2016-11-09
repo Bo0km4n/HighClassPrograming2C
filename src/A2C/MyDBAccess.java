@@ -11,6 +11,7 @@ public class MyDBAccess {
     private Connection connection;
     private Statement statement;
     private ResultSet resultset;
+    private PreparedStatement pstmt;
  
     /**
      * コンストラクタ
@@ -44,7 +45,7 @@ public class MyDBAccess {
     public synchronized void open() throws Exception {
         Class.forName(driver);
         connection = DriverManager.getConnection(url, user, password);
-        statement = connection.createStatement();
+        statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,0);
     }
  
     /**

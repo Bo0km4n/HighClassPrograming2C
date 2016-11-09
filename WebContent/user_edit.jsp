@@ -41,7 +41,7 @@ ResultSet rs = db.getResultSet(sql);
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/Advanced2C/top.html">Home</a></li>
+        <li><a href="/Advanced2C/user.jsp">Home</a></li>
         <li class="active"><a href="/Advanced2C/user_edit.jsp">Edit</a></li>
         <li><a href="/Advanced2C/logout">logout</a></li>
       </ul>
@@ -54,38 +54,45 @@ ResultSet rs = db.getResultSet(sql);
 	
 		<!-- ユーザーにアクティブなアプリケーションの一覧 -->
 		<h1>Your applications</h1>
+		<form method="POST" action="user_edit_delete">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>application_name</th>
 					<th>application_overview</th>
+					<th>delete from your list</th>
 				</tr>
 			</thead>
 			<tbody>
 					<% while(rs.next()){ 
+				  int application_id = rs.getInt("application_id");		
 			      String application_name = rs.getString("application_name");	
 			      String application_overview = rs.getString("application_overview");
 			      %>
 			      	<tr>
 			        	<td><%= application_name %></td>
 			        	<td><%= application_overview %></td>
+			        	<td><button type="submit" class="btn btn-danger" name="application_id" value=<%= application_id %>>削除</button></td>
 			      	</tr>
 			      <% } %>
 		      	
 			</tbody>
 		</table>
+		</form>
 		<% rs.close(); %>
 		<!-- 一覧終了 -->
 		
 		<!-- アプリケーションの追加 user_applicationsテーブル -->
 			<h2>Add application!</h2>
-			<% ResultSet rs_add = db.getResultSet(sql_add); %>
-			<% 
-				while(rs_add.next()){
-					out.println(rs_add.getString("application_name"));
-					out.println(rs_add.getString("application_overview"));
-				}
-			%>		
+			<% ResultSet rs_add = db.getResultSet(sql_add); %>	
+			 <form action="/Advanced2C/user_edit" method="post">
+			 	<% while(rs_add.next())  {%>
+				  <div class="radio">
+				  	<label><input type="radio" name="application_id" value=<%= rs_add.getInt("application_id") %>><%= rs_add.getString("application_name") %></label>
+				   </div>
+				 <% } %>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		<!-- 追加処理 user_edit.java へ -->
 	</div>
 </body>

@@ -1,23 +1,29 @@
 package A2C;
 import java.sql.*;
 import java.io.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
+
 import A2C.MyDBAccess;
 public class application_shortcuts extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
 		MyDBAccess db = new MyDBAccess();
 		RequestDispatcher rd = null;
 		HttpSession session = request.getSession(false);
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		String tmp = request.getParameter("application_id");
+		int application_id = Integer.parseInt(tmp);
+		String sql = "select * from shortcuts where application_id="+ application_id + ";";
 		try{
 			/**
 			 *  user_idとapplication_idの紐付け
 			 */
 			db.open();
+			ResultSet rs = db.getResultSet(sql);
 			
-			/**
-			 * この実際の処理は少しお預け、user_edit.jsp user_edit.javaを作ったら
-			 */
+			
 			
 			rd = request.getRequestDispatcher("/application_shortcuts.jsp");
 			
