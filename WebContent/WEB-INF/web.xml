@@ -74,5 +74,14 @@
   	<url-pattern>/user_edit_delete</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>class_select</servlet-name>
+  	<servlet-class>A2C.class_select</servlet-class>
+  	</servlet>
+  <servlet-mapping>
+  	<servlet-name>class_select</servlet-name>
+  	<url-pattern>/class_select</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
