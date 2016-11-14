@@ -45,8 +45,8 @@ public class register extends HttpServlet{
 				statement.setString(2,user_password);
 				statement.setString(3,name);
 				statement.executeUpdate();
-				statement.close();
-				con.close();
+				//statement.close();
+				//con.close();
 				String message_success = "登録が完了しました";
 				request.setAttribute("message_success", message_success);
 				 rd = request.getRequestDispatcher("/register_success.jsp");

@@ -44,7 +44,6 @@
 	//SQL文の実行
 	    boolean retval = statement.execute(sql);
 		ResultSet rs = statement.getResultSet();
-		
 		retval = statement2.execute(class_sql);
 		ResultSet rs_class = statement2.getResultSet();
 		rs.next(); 													//application_nameの取得の為１行目にカーソル移動
@@ -82,7 +81,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/Advanced2C/user.jsp">Home</a></li>
         <li class="active"><a href="/Advanced2C/user_edit.jsp">Edit</a></li>
-        <li><a href="/Advanced2C/logout">logout</a></li>
+        <li><a href="/Advanced2C/logout.jsp">logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

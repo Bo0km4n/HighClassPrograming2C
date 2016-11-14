@@ -43,7 +43,7 @@ ResultSet rs = db.getResultSet(sql);
       <ul class="nav navbar-nav">
         <li><a href="/Advanced2C/user.jsp">Home</a></li>
         <li class="active"><a href="/Advanced2C/user_edit.jsp">Edit</a></li>
-        <li><a href="/Advanced2C/logout">logout</a></li>
+        <li><a href="/Advanced2C/logout.jsp">logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

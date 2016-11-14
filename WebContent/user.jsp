@@ -42,9 +42,9 @@ ResultSet rs = db.getResultSet("select B.* from user_applications A,applications
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/Advanced2C/top.html">Home</a></li>
+        <li class="active"><a href="/Advanced2C/user.jsp">Home</a></li>
         <li><a href="/Advanced2C/user_edit.jsp">Edit</a></li>
-        <li><a href="/Advanced2C/logout">logout</a></li>
+        <li><a href="/Advanced2C/logout.jsp">logout</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
