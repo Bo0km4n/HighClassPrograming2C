@@ -72,7 +72,7 @@ ResultSet rs = db.getResultSet(sql);
 			      	<tr>
 			        	<td><%= application_name %></td>
 			        	<td><%= application_overview %></td>
-			        	<td><button type="submit" class="btn btn-danger" name="application_id" value=<%= application_id %>>削除</button></td>
+			        	<td><button type="submit" class="btn btn-danger" name="application_id" value=<%= application_id %>>Delete</button></td>
 			      	</tr>
 			      <% } %>
 		      	
@@ -82,18 +82,31 @@ ResultSet rs = db.getResultSet(sql);
 		<% rs.close(); %>
 		<!-- 一覧終了 -->
 		
-		<!-- アプリケーションの追加 user_applicationsテーブル -->
-			<h2>Add application!</h2>
-			<% ResultSet rs_add = db.getResultSet(sql_add); %>	
-			 <form action="/Advanced2C/user_edit" method="post">
-			 	<% while(rs_add.next())  {%>
-				  <div class="radio">
-				  	<label><input type="radio" name="application_id" value=<%= rs_add.getInt("application_id") %>><%= rs_add.getString("application_name") %></label>
-				   </div>
-				 <% } %>
-				  <button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-		<!-- 追加処理 user_edit.java へ -->
+		
+		
+		
+		<h2>Add New Application!</h2>	
+			<% ResultSet rs_add = db.getResultSet(sql_add); %>
+			<!-- application_nameの一覧表示  -->
+			<form class="form-horizontal" action="/Advanced2C/user_edit" method="post">
+		  <div class="form-group">
+		    <label for="number" class="control-label col-xs-2">Please choice your Application_name</label>
+		    <div class="col-xs-3">
+		      <select class="form-control" name="application_id">
+		      <% while(rs_add.next()){
+		      %>
+		        <option value=<%= rs_add.getInt("application_id") %>><%= rs_add.getString("application_name") %></option> 
+		      <% } %>
+		      </select>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-xs-offset-2 col-xs-10">
+		      <button type="submit" class="btn btn-primary">Add</button>
+		    </div>
+		  </div>
+		</form>
+		<!-- 一覧表示終わり -->
 	</div>
 </body>
 </html>
